@@ -54,7 +54,7 @@ async def on_ready():
     print(client.user.name)
     print('------')
     
-
+#Displays Currently logged in servers 
 async def list_servers():
     await client.wait_until_ready()
     while not client.is_closed:
