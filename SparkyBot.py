@@ -6,26 +6,27 @@ from discord import Game
 from discord.ext.commands import Bot
 from Token import TOKEN_REF
 
-BOT_PREFIX = ("_")
+BOT_PREFIX = ("_","-")
 
 TOKEN = TOKEN_REF
 
 client = Bot(command_prefix=BOT_PREFIX)
 
 #Test Reply Stuff
-@client.event
-async def on_message(message):
-    # we do not want the bot to reply to itself
-    if message.author == client.user:
-        return
+#@client.event
+#async def on_message(message):
+#    # we do not want the bot to reply to itself
+#    if message.author == client.user:
+#        return
+#
+#    if message.content.startswith('_hello'):
+#        msg = 'Hello {0.author.mention}'.format(message)
+#        await client.send_message(message.channel, msg)
+#
+#    if message.content.startswith('_mad'):
+#        msg = "I'm Going To Build My Own Bot With Blackjack and Hookers".format(message)
+#        await client.send_message(message.channel, msg)
 
-    if message.content.startswith('_hello'):
-        msg = 'Hello {0.author.mention}'.format(message)
-        await client.send_message(message.channel, msg)
-
-    #if message.content.startswith('_mad'):
-     #   msg = "I'm Going To Build My Own Bot With Blackjack and Hookers".format(message)
-      #  await client.send_message(message.channel, msg)
 
 # 8 Ball Thing
 @client.command(name='8ball',
