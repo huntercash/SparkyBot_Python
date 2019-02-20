@@ -43,6 +43,9 @@ async def hi_there(context):
     ]
     await client.say(random.choice(hithere_responses))
 
+
+
+#Displays a message under the bots username in the discord channel as "playing ####"
 @client.event
 async def on_ready():
     await client.change_presence(game=discord.Game(name="MacBot 0.1"))
@@ -59,6 +62,7 @@ async def list_servers():
         for server in client.servers:
             print(server.name)
         await asyncio.sleep(600)
+
 
 client.loop.create_task(list_servers())
 client.run(TOKEN)
