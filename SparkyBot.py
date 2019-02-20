@@ -43,7 +43,13 @@ async def hi_there(context):
     ]
     await client.say(random.choice(hithere_responses))
 
-
+#Beginning of GOTC single keep attack calculator
+#@client.command(name="Keep",
+#                pass_context=True)
+#async def keep(context):
+#    keep_response = [
+#        "Please type _KEEPLEVEL",
+#    ]
 
 #Displays a message under the bots username in the discord channel as "playing ####"
 @client.event
