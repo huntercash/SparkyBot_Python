@@ -51,6 +51,15 @@ async def hi_there(context):
 #        "Please type _KEEPLEVEL",
 #    ]
 
+#This is broken for now haha
+#@client.command(name="mad",
+#                pass_context=True)
+#async def mad():
+#    mad_response = "I'm Going To Build My Own Bot With " + context.message.author.mention + " Blackjack and Hookers"
+#await client.say(mad)
+
+
+
 #Displays a message under the bots username in the discord channel as "playing ####"
 @client.event
 async def on_ready():
