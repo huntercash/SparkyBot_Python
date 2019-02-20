@@ -12,21 +12,6 @@ TOKEN = TOKEN_REF
 
 client = Bot(command_prefix=BOT_PREFIX)
 
-#Test Reply Stuff
-#@client.event
-#async def on_message(message):
-#    # we do not want the bot to reply to itself
-#    if message.author == client.user:
-#        return
-#
-#    if message.content.startswith('_hello'):
-#        msg = 'Hello {0.author.mention}'.format(message)
-#        await client.send_message(message.channel, msg)
-#
-#    if message.content.startswith('_mad'):
-#        msg = "I'm Going To Build My Own Bot With Blackjack and Hookers".format(message)
-#        await client.send_message(message.channel, msg)
-
 
 # 8 Ball Thing
 @client.command(name='8ball',
@@ -44,11 +29,23 @@ async def eight_ball(context):
     ]
     await client.say(random.choice(possible_responses) + ", " + context.message.author.mention)
 
-
+#Telling the bot _hi and having it reply
+@client.command(name='hi',
+                description="Tells the user hi using various movie quotes",
+                brief="Hey Man.",
+                aliases=['hey', 'sup', 'hello', 'yo'],
+                pass_context=True)
+async def hi_there(context):
+    hithere_responses = [
+        "Hey, man. I'm Korg. This is " + context.message.author.mention + " We're gonna jump on that spaceship and get outta here. Wanna come?",
+        "What's up " + context.message.author.mention,
+        context.message.author.mention + " was here",
+    ]
+    await client.say(random.choice(hithere_responses))
 
 @client.event
 async def on_ready():
-    await client.change_presence(game=discord.Game(name="Macbot 2.0"))
+    await client.change_presence(game=discord.Game(name="MacBot 0.1"))
     print("Logged in as " + client.user.name)
     print(client.user.id)
     print(client.user.name)
