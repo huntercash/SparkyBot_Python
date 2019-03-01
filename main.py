@@ -1,19 +1,15 @@
 import discord
+import os
 import asyncio
-import aiohttp
 import random
-from discord import Game
+import pandas
 from discord.ext.commands import Bot
-from Token import TOKEN_REF
+from keep_alive import keep_alive
 
 BOT_PREFIX = ("_","-")
-
-TOKEN = TOKEN_REF
-
 client = Bot(command_prefix=BOT_PREFIX)
 
-
-# 8 Ball Thing
+#8 Ball
 @client.command(name='8ball',
                 description="Answers a yes/no question.",
                 brief="Answers from the beyond.",
@@ -29,7 +25,7 @@ async def eight_ball(context):
     ]
     await client.say(random.choice(possible_responses) + ", " + context.message.author.mention)
 
-#Telling the bot _hi and having it reply
+#Say hello
 @client.command(name='hi',
                 description="Tells the user hi using various movie quotes",
                 brief="Hey Man.",
@@ -43,33 +39,20 @@ async def hi_there(context):
     ]
     await client.say(random.choice(hithere_responses))
 
-#Beginning of GOTC single keep attack calculator
-#@client.command(name="Keep",
-#                pass_context=True)
-#async def keep(context):
-#    keep_response = [
-#        "Please type _KEEPLEVEL",
-#    ]
-
-#This is broken for now haha
-#@client.command(name="mad",
-#                pass_context=True)
-#async def mad():
-#    mad_response = "I'm Going To Build My Own Bot With " + context.message.author.mention + " Blackjack and Hookers"
-#await client.say(mad)
+@client.command(pass_context=True)
+async def SparkyBot(context):
+  await client.say("I'm Going To Build My Own Bot With Blackjack and " + context.message.author.mention)
 
 
-
-#Displays a message under the bots username in the discord channel as "playing ####"
+#---------------------------------------End-----------------------
 @client.event
 async def on_ready():
-    await client.change_presence(game=discord.Game(name="MacBot 0.1"))
+    await client.change_presence(game=discord.Game(name="Now in Color"))
     print("Logged in as " + client.user.name)
     print(client.user.id)
     print(client.user.name)
     print('------')
-    
-#Displays Currently logged in servers 
+
 async def list_servers():
     await client.wait_until_ready()
     while not client.is_closed:
@@ -78,6 +61,6 @@ async def list_servers():
             print(server.name)
         await asyncio.sleep(600)
 
-
-client.loop.create_task(list_servers())
-client.run(TOKEN)
+keep_alive()
+token = os.environ.get("DISCORD_BOT_SECRET")
+client.run(token)
