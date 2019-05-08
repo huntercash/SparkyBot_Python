@@ -2,11 +2,10 @@ import discord
 import os
 import asyncio
 import random
-import pandas
 from discord.ext.commands import Bot
-from keep_alive import keep_alive
+from auth import token
 
-BOT_PREFIX = ("_","-")
+BOT_PREFIX = ("_","-","!")
 client = Bot(command_prefix=BOT_PREFIX)
 
 #8 Ball
@@ -17,37 +16,40 @@ client = Bot(command_prefix=BOT_PREFIX)
                 pass_context=True)
 async def eight_ball(context):
     possible_responses = [
-        'That is a resounding no',
-        'It is not looking likely',
-        'Too hard to tell',
-        'It is quite possible',
-        'Definitely',
+        'i cant say no',
+        'idk, but Airis is my #1 wife',
+        'idk, but im going down the street to have a mimosa',
+        'It is known',
+        'Sparky said I was right. I pinned it in discord',
     ]
     await client.say(random.choice(possible_responses) + ", " + context.message.author.mention)
 
 #Say hello
 @client.command(name='hi',
-                description="Tells the user hi using various movie quotes",
-                brief="Hey Man.",
+                description="Things athena says",
+                brief="don't upgrade my firmware",
                 aliases=['hey', 'sup', 'hello', 'yo'],
                 pass_context=True)
 async def hi_there(context):
-    hithere_responses = [
-        "Hey, man. I'm Korg. This is " + context.message.author.mention + " We're gonna jump on that spaceship and get outta here. Wanna come?",
-        "What's up " + context.message.author.mention,
-        context.message.author.mention + " was here",
+    hithere_responses = ["What do you mean you didn't read the rein channel " + context.message.author.mention + " You're being kicked!",
+                         "I can't find my pants, can you help me " + context.message.author.mention + "?",
     ]
     await client.say(random.choice(hithere_responses))
 
-@client.command(pass_context=True)
-async def SparkyBot(context):
-  await client.say("I'm Going To Build My Own Bot With Blackjack and " + context.message.author.mention)
+@client.command(name="youareright",
+                pass_context=True)
+async def you_are_right(context):
+  await client.say("It is Known")
+
+
+
+
 
 
 #---------------------------------------End-----------------------
 @client.event
 async def on_ready():
-    await client.change_presence(game=discord.Game(name="Now in Color"))
+    await client.change_presence(game=discord.Game(name="Firmware 1.0"))
     print("Logged in as " + client.user.name)
     print(client.user.id)
     print(client.user.name)
@@ -61,6 +63,4 @@ async def list_servers():
             print(server.name)
         await asyncio.sleep(600)
 
-keep_alive()
-token = os.environ.get("DISCORD_BOT_SECRET")
 client.run(token)

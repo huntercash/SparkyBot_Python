@@ -2,3 +2,4 @@
 .env
 __pycache__/Token.cpython-36.pyc
 .DS_Store
+auth.py
