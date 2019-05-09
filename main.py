@@ -36,14 +36,76 @@ async def hi_there(context):
     ]
     await client.say(random.choice(hithere_responses))
 
+# I am always right
 @client.command(name="youareright",
                 pass_context=True)
 async def you_are_right(context):
   await client.say("It is Known")
 
+# No
+@client.command(name='thirdbranch',
+                description="emoji?",
+                brief="bad bad bad",
+                aliases=['please', 'illinois', 'no'],
+                pass_context=True)
+async def emoji_squirt(context):
+    squirt_emoji_reponse = "<:squirt:575768643850469386>"
+    await client.say(squirt_emoji_reponse)
 
 
+#Allies and NAPS
+@client.command(name='naps',
+                description="300 Allies and Naps",
+                brief="300's Allies and Naps",
+                aliases=['war', 'enemies', 'allies'],
+                pass_context=True)
+async def allies_naps(context):
+    allies = """
+Seriously? How could you forget?!
+Current Allies: None
+Naps:
+03APR2019: VIPER/VENOM
+19APR2019: OXIA
+21APR2019: BINDA
+- If you attack any of these not during pvp I will punt you                
+- Viper/Venom: Can attack and take SOPS only during pvp"""
+    await client.say(allies)
 
+#White Flag Response
+@client.command(name='whiteflag',
+                description="should you get a whiteflag",
+                brief="hmmmm maybe",
+                pass_context=True)
+async def white_flag_function(context):
+    white_flag_response = ["Bitch, you better not be on a honeymoon",
+                           "Livia is the boss",
+                           ]
+    await client.say(random.choice(white_flag_response))
+
+#because i said so 
+@client.command(name='howdidthathappen',
+                aliases=['why'],
+                pass_context=True)
+async def saidso_function(context):
+    because_respone = "Sparky said so <:squirt:575768643850469386>"
+    await client.say(because_respone)
+
+
+@client.command(name='schedule',
+                pass_context=True)
+async def schedule_function(context):
+    spark_schedule = """
+Spart has the following schedule
+TimeZone CST (-6)
+Monday - Work 9-5, Class 6:30-9:30
+Tuesday - Work 9-5:30
+Wednesday - Work 9-5, Class 6:30-9:30
+Thursday - Work 9-5:30 (work from home)
+Friday - Work 9-5:30
+Saturday - Class 10:00-2:00
+Sunday - Nothingggg
+"""
+    await client.say(spark_schedule)
 
 
 #---------------------------------------End-----------------------
