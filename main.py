@@ -52,6 +52,21 @@ async def emoji_squirt(context):
     squirt_emoji_reponse = "<:squirt:575768643850469386>"
     await client.say(squirt_emoji_reponse)
 
+#Airis Face
+@client.command(name='airisface',
+                description="airis' face",
+                brief="the face",
+                aliases=['airis', 'wife'],
+                pass_context=True)
+async def emoji_airis(context):
+    airis_emoji_response = ":expressionless:"
+    await client.say(airis_emoji_response)
+
+
+
+
+
+
 
 #Allies and NAPS
 @client.command(name='naps',
@@ -64,11 +79,8 @@ async def allies_naps(context):
 Seriously? How could you forget?!
 Current Allies: None
 Naps:
-03APR2019: VIPER/VENOM
 19APR2019: OXIA
-21APR2019: BINDA
-- If you attack any of these not during pvp I will punt you                
-- Viper/Venom: Can attack and take SOPS only during pvp"""
+21APR2019: BINDA"""
     await client.say(allies)
 
 #White Flag Response
